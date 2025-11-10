@@ -1,0 +1,1 @@
+export const BASE_URL = "https://one23-2-ziy6.onrender.com";

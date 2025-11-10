@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سلة المشتريات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body class="login-page">
+  <div class="container">
+    <i id="lang-icon-login" class="fa fa-globe"></i>
+    <div class="card paymentcard">
+      <div class="cart-header">
+        <h2>سلة المشتريات</h2>
+        <i class="fa fa-shopping-bag icon-right"></i>
+      </div>
+
+      <div class="cart-title">سلتك</div>
+
+      <div class="cart-item">
+      </div>
+
+      <div class="summary" id="summary-section">
+        <div class="summary-row">
+          <span>الإجمالي الفرعي</span>
+          <span>50 ريال</span>
+        </div>
+        <div class="summary-row">
+          <span>الشحن</span>
+          <span>مجاني</span>
+        </div>
+        <div class="summary-row total">
+          <span>المجموع الكلي:</span>
+          <span>50 ريال</span>
+        </div>
+        <button class="checkout-btn" id="checkout-btn">إتمام الدفع</button>
+      </div>
+
+      <div class="summary" id="payment-section" style="display: none; flex-direction: column; text-align: center;">
+        <button class="checkout-btn apple">Buy with  Pay</button>
+        <div style="margin: 15px 0; display: flex; align-items: center; text-align: center;">
+          <hr style="flex:1; border-top:1px solid #ccc;">
+          <span style="margin: 0 10px; color: grey;">أو الدفع باستخدام</span>
+          <hr style="flex:1; border-top:1px solid #ccc;">
+        </div>
+        <div style="display: flex; justify-content: space-around; margin-bottom: 15px;">
+          <img src="images/urpay.png" alt="Pay1" style="width:50px; height:50px;"class="lazyload">
+          <img src="images/sadad.png" alt="Pay2" style="width:50px; height:50px;"class="lazyload">
+          <img src="images/stc.png" alt="Pay3" style="width:50px; height:50px;"class="lazyload">
+          <img src="images/mada.png" alt="Pay4" style="width:50px; height:50px;"class="lazyload">
+          <img src="images/tamara.jpeg" alt="Pay5" style="width:50px; height:50px;"class="lazyload">
+        </div>
+        <button class="checkout-btn" id="final-pay-btn">إتمام الدفع</button>
+      </div>
+
+        <div class="card order-details" id="order-details" style="display:none; flex-direction: column; padding:15px; background:#fff; border-radius:12px;">
+        
+        <div class="cart-header" style="margin-bottom:15px;">
+            <h2>تفاصيل الطلب</h2>
+        </div>
+
+        <div class="details-summary-row" >
+            <span style="color:#CD760A;">Order ID:</span>
+            <span style="color:black;">#123442</span>
+        </div>
+
+        <div class="details-summary-row" >
+            <span style="color:#CD760A;">Customer Name:</span>
+            <span style="color:black;">Ahmed Ali</span>
+        </div>
+
+        <div class="details-summary-row" >
+            <span style="color:#CD760A;">Address :</span>
+            <span style="color:black;">(المدينة – الحي – الشارع – رقم المبنى)</span>
+        </div>
+
+        <div class="summary-row map-row" style="justify-content:flex-start; margin:10px 0;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.1234567890!2d50.123456!3d26.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDA3JzAwLjAiTiA1MMKwMDcnMDMuMCJF!5e0!3m2!1sar!2ssa!4v1690000000000!5m2!1sar!2ssa" 
+                width="100%" 
+                height="150" 
+                style="border:0; border-radius:8px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="details-summary-row">
+            <span style="color:#CD760A;"> Contact Number:</span>
+            <span style="color:black;">0501234567</span>
+        </div>
+        <div class="details-summary-row status-row">
+            <span style="color:#CD760A"> يتم التجهيز</span> -
+            <span style="color:black;">تم التسليم</span> – 
+            <span style="color:black;" >في الطريق</span> 
+        </div>
+
+        <div class="details-summary-row" >
+            <span style="color:#CD760A;">Notes :</span>
+            <span style="color:black;">يفضل الاتصال قبل الوصول أو المدخل الخلفي</span>
+        </div>
+
+        <div class= "receipt-button" >
+            <button class="checkout-btn" onclick="location.href='index.html'">العودة للرئيسية</button>
+            <button class="checkout-btn">تغيير الموقع</button>
+            <button class="checkout-btn">تحديث الحالة</button>
+        </div>
+        </div>
+    </div>
+  </div>
+
+<script type="module" src="js/api.js"></script>
+<script type="module" src="js/userScript.js"></script>
+<script type="module" src="js/Paymentscripts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+  <!DOCTYPE html>
+  <html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+
+  <header>
+    <div class="header">
+      <div class="left-icons">
+        <div id="sidebar">
+          <div id="toggleSidebar" class="menu-button">
+            <i class="fas fa-bars header-icon"></i>
+          </div>
+            <div class="sidebar-icons">
+              <a href="index.html" class="sidebar-icon">
+                <i class="fas fa-home"></i>
+                <span class="sidebar-text">الرئيسية</span>
+              </a>
+
+              <a href="Factories.html" class="sidebar-icon">
+                <i class="fas fa-box"></i>
+                <span class="sidebar-text">المنتجات</span>
+              </a>
+
+              <a href="brands.html" class="sidebar-icon">
+                <i class="fas fa-receipt"></i>
+                <span class="sidebar-text">الطلبات</span>
+              </a>
+
+              <a href="support.html" class="sidebar-icon">
+                <i class="fas fa-industry"></i>
+                <span class="sidebar-text"> المصانع</span>
+              </a>
+
+              <a href="#" class="sidebar-icon">
+                <i class="fas fa-cog"></i>
+                <span class="sidebar-text">الإعدادات</span>
+              </a>
+            </div>
+        </div>
+        <a href="#">
+          <i class="fa fa-globe lang-icon"></i>
+        </a>
+  <a onclick="showLogoutOverlay()" class="header-btn">
+    <i class="fa fa-sign-out"></i>
+    <span>تسجيل الخروج</span>
+  </a>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="اكتب اسم المنتج أو الشركة" />
+        <i class="fa fa-search search-icon"></i>
+      </div>
+
+      <div class="right-icons">
+
+      </div>
+    </div>
+  </header>
+  <body class="seller-bg">
+
+  <section class="seller-homepage">
+
+  <section class="seller-detail">
+
+    <div id="home-section" class="page-section">
+  <div class="home-header">
+      <h1 class="section-title seller">الرئيسية</h1>
+    <div class="export-dropdown">
+      <button class="export-btn">
+        <i class="fa fa-file-excel"></i> تصدير
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="export-options">
+        <div class="export-option" onclick="exportFile('orders')">الطلبات</div>
+        <div class="export-option" onclick="exportFile('products')">المنتجات</div>
+        <div class="export-option" onclick="exportFile('customers')">العملاء</div>
+      </div>
+    </div>
+    </div>
+    
+
+    <!-- KPI Cards -->
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <i class="fas fa-users kpi-icon"></i>
+        <p class="kpi-title">العملاء</p>
+        <p class="kpi-number">250</p>
+      </div>
+      <div class="kpi-card">
+        <i class="fas fa-dollar-sign kpi-icon"></i>
+        <p class="kpi-title">الأرباح</p>
+        <p class="kpi-number">12,500 ريال</p>
+      </div>
+      <div class="kpi-card">
+        <i class="fas fa-shopping-cart kpi-icon"></i>
+        <p class="kpi-title">الطلبات</p>
+        <p class="kpi-number">320</p>
+      </div>
+      <div class="kpi-card">
+        <i class="fas fa-boxes kpi-icon"></i>
+        <p class="kpi-title">المنتجات</p>
+        <p class="kpi-number">1200</p>
+      </div>
+    </div>
+
+  <div class="graph-row">
+    <div class="graph-card">
+      <h3>مخطط المبيعات الشهري</h3>
+      <img src="images/graph1.png" alt="Sales Chart" class="graph-image"class="lazyload">
+    </div>
+    <div class="graph-card">
+      <h3>أداء الطلبات</h3>
+      <img src="images/graph2.png" alt="Orders Chart" class="graph-image"class="lazyload">
+    </div>
+  </div>
+
+
+    <div class="tables-row">
+
+      <div class="orders-table-container">
+        <h3>أحدث الطلبات</h3>
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>رقم الطلب</th>
+              <th>العميل</th>
+              <th>الحالة</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Top Selling Products -->
+      <div class="sales-table-container">
+        <h3>أفضل المنتجات مبيعًا</h3>
+        <table class="sales-table">
+          <thead>
+            <tr>
+              <th>المنتج</th>
+              <th>المبيعات</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="products-section" class="page-section" style="display:none;">
+    <h1 class="section-title seller">المنتجات</h1>
+
+    <div class="products-table-container">
+
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th>المنتج</th>
+            <th>السعر</th>
+            <th>المخزون</th>
+            <th>الحالة</th>
+            <th>الإجراءات</th>
+          </tr>
+        </thead>
+      <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+
+    <div id="orders-section" class="page-section" style="display:none;">
+    <h1 class="section-title seller">الطلبات </h1>
+
+      <div class="dynamic-row">
+      </div>
+    </div>
+
+    <div id="factories-section" class="page-section" style="display:none;">
+        <h1 class="section-title seller">المصانع </h1>
+      <div class="dynamic-row">
+        <div class="factory-box-dynamic">
+         
+        </div>
+      </div>
+    </div>
+  <div id="settings-section" class="page-section" style="display:none;">
+    <h1 class="section-title seller">المعلومات الشخصية</h1>
+
+    <div class="settings-row">
+      <!-- Personal Info Box -->
+      <div class="settings-box personal-info-box">
+        <div class="settings-header">
+          <i class="fas fa-user"></i>
+          <span class="section-title seller">المعلومات الشخصية</span>
+        </div>
+
+        <div class="personal-info">
+          <div class="info-row">
+            <span class="info-label">الاسم:</span>
+            <span class="info-value" id="admin-name">جاري التحميل...</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">البريد الإلكتروني:</span>
+            <span class="info-value" id="admin-email">---</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">رقم الجوال:</span>
+            <span class="info-value" id="admin-phone">---</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">العنوان:</span>
+            <span class="info-value" id="admin-address">---</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">اسم الشركة:</span>
+            <span class="info-value" id="admin-company">---</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">الملف التجاري:</span>
+            <span class="info-value" id="admin-commercial">---</span>
+          </div>
+        </div>
+
+        <div class="settings-options">
+          <button class="delete-account-btn" id="deleteAccountBtn">
+            <i class="fa fa-trash"></i> حذف الحساب
+          </button>
+        </div>
+      </div>
+
+      <!-- Notifications Box -->
+      <div class="settings-box">
+        <div class="settings-header">
+          <i class="fas fa-bell"></i>
+          <span class="section-title seller">الإشعارات</span>
+        </div>
+
+        <div class="settings-options">
+          <div class="toggle-option">
+            <span>تنبيهات البريد الإلكتروني</span>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="toggle-option">
+            <span>تحديثات الطلب</span>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="toggle-option">
+            <span>انتهاء صلاحية الاشتراك</span>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--  Add Product Modal -->
+<div id="addProductModal" class="modal-overlay" style="display:none;">
+  <div class="modal-content">
+    <h2>إضافة منتج جديد</h2>
+    <form id="addProductForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>صورة المنتج:</label>
+        <input type="file" id="productImage" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label>اسم المنتج:</label>
+        <input type="text" id="productName" placeholder="أدخل اسم المنتج" required>
+      </div>
+
+      <div class="form-group">
+        <label>الوصف:</label>
+        <textarea id="productDescription" rows="3" placeholder="أدخل وصف المنتج"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>السعر (ريال):</label>
+        <input type="number" id="productPrice" required>
+      </div>
+
+      <div class="form-group">
+        <label>الكمية في المخزون:</label>
+        <input type="number" id="productStock" required>
+      </div>
+      <div class="form-group">
+        <label for="productUnit">وحدة القياس</label>
+        <select id="productUnit" required>
+          <option value="قطعة">قطعة</option>
+          <option value="كيس">كيس</option>
+          <option value="طن">طن</option>
+          <option value="متر">متر</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>الفئة:</label>
+        <select id="productCategory" required>
+          <option value="">اختر فئة</option>
+          <option value="مواد أساسية">مواد أساسية</option>
+          <option value="مواد بناء">مواد بناء</option>
+          <option value="ادوات كهربائية">ادوات كهربائية</option>
+          <option value="ادوات صحية">ادوات صحية</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>المورد:</label>
+        <input type="text" id="productSupplier" placeholder="اسم المورد">
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="save-btn">حفظ</button>
+        <button type="button" class="cancel-btn" id="cancelAddProduct">إلغاء</button>
+      </div>
+    </form>
+  </div>
+</div>
+  </section>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-column newsletter-column">
+          <h4>ابق على تواصل</h4>
+          <p>احصل على آخر تحديثاتنا في بريدك الإلكتروني</p>
+          <div class="newsletter">
+            <input type="email" placeholder="ادخل بريدك الإلكتروني">
+            <span class="mail-icon"><i class="fa fa-envelope"></i></span>
+          </div>
+          <button class="subscribe-btn">اشترك</button>
+        </div>
+
+        <div class="footer-column">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#">المدونة</a></li>
+            <li><a href="#">من نحن</a></li>
+            <li><a href="#">المصانع</a></li>
+            <li><a href="#">سوق طلبات عروض الأسعار</a></li>
+            <li><a href="#">الفئات</a></li>
+            <li><a href="#">العلامات التجارية</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>السياسات والشروط</h4>
+          <ul>
+            <li><a href="#">سياسة الخصوصية</a></li>
+            <li><a href="#">سياسة إدراج المنتجات</a></li>
+            <li><a href="#">سياسة الإرجاع والاسترداد</a></li>
+            <li><a href="#">الشروط و الاحكام (المصانع)</a></li>
+            <li><a href="#">الشروط و الاحكام (العملاء)</a></li>
+            <li><a href="#">حذف الحساب</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>أنواع الدفع</h4>
+          <ul class="payment-list">
+            <li><img src="images/visa.png" alt="فيزا" class="payment-icon"class="lazyload"> فيزا كارد</li>
+            <li><img src="images/Mastercard.png" alt="ماستر كارد" class="payment-icon"class="lazyload"> ماستر كارد</li>
+            <li><img src="images/applepay.png" alt="ابل باي" class="payment-icon"class="lazyload"> أبل باي</li>
+            <li><img src="images/mada.png" alt="مدى" class="payment-icon"class="lazyload"> مدى</li>
+            <li><i class="fa fa-money-bill-wave payment-icon"></i> التحويل البنكي </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>تواصل معنا</h4>
+          <p style="font-size: 14px; margin-bottom: 10px;" ><a href="mailto:build@gmail.com">build@gmail.com</a></p>
+          <p style="font-size: 14px;"><a href="tel:058397438">058397438</a></p>
+
+          <!-- Social Media Icons -->
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+  <p>© 2025. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Logout Confirmation Overlay -->
+  <div id="logoutOverlay" style="display:none;">
+    <div class="logoutBox">
+      <p>هل أنت متأكد أنك تريد تسجيل الخروج؟</p>
+      <div class="logoutButtons">
+        <button id="confirmLogout">تسجيل الخروج</button>
+        <button id="cancelLogout">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="module" src="js/api.js"></script>
+  <script type="module" src="js/adminProfile.js"></script>
+  <script src="js/sellerscript.js"></script>
+
+  </body>
+  </html>

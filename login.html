@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول  </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body class="login-page">
+  <div class="container">
+<i id="lang-icon-login" class="fa fa-globe"></i>
+    <div class="card">
+    <h2 id="main-title">إنشاء حساب</h2>
+
+      <p id="main-subtitle" class="subtitle">اختر نوع المستخدم الذي تريده</p>
+
+      <div class="tabs">
+        <button id="login-tab" class="tab">تسجيل دخول</button>
+        <button id="signup-tab" class="tab active">إنشاء حساب</button>
+      </div>
+
+      <!-- Signup/Login Sections -->
+      <div id="signup-section" class="content-section active">
+        <div class="options-box">
+          <div class="options">
+            <button class="option" data-user="buyer">
+              <i class="fa-solid fa-user icon"></i>
+              <div class="option-text">
+                <span>التسجيل كمشتري</span>
+                <small>أخطط لشراء منتج</small>
+              </div>
+            </button>
+            <button class="option" data-user="seller">
+              <i class="fa-solid fa-building icon"></i>
+              <div class="option-text">
+                <span>التسجيل كبائع</span>
+                <small>أخطط لبيع منتج</small>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="login-section" class="content-section">
+        <div class="login-options">
+          <label>
+            <input type="radio" name="login-method" id="email-radio" checked />
+            البريد الإلكتروني
+          </label>
+          <label>
+            <input type="radio" name="login-method" id="phone-radio" />
+            رقم الجوال
+          </label>
+        </div>
+
+        <div class="input-wrapper">
+          <input type="text" id="login-input" placeholder="أدخل البريد الإلكتروني" class="input-field" />
+          <i id="input-icon" class="input-icon fa-solid fa-envelope"></i>
+        </div>
+          <div class="input-wrapper">
+          <input type="password" id="pass-input" placeholder="أدخل رمز المرور " class="input-field" />
+          <i class="input-icon fa-solid fa-password"></i>
+        </div>
+      <button class="send-btn" id="login-btn">إرسال</button>
+      </div>
+
+      <!-- Multi-step Signup Form -->
+      <div id="signup-steps" class="content-section">
+        <div class="steps-indicator">
+          <div class="step-container">
+            <span class="step">1</span>
+            <small>عنوان البريد<br>الإلكتروني</small>
+          </div>
+          <div class="step-container">
+            <span class="step">2</span>
+            <small>رمز التحقق</small>
+          </div>
+          <div class="step-container">
+            <span class="step">3</span>
+            <small>الحماية</small>
+          </div>
+          <div class="step-container">
+            <span class="step">4</span>
+            <small>معلومات العميل</small>
+          </div>
+        </div>
+
+        <!-- Step 1: Email -->
+        <div class="step-content active" data-step="1">
+          <div class="input-wrapper">
+            <input type="email" placeholder="أدخل البريد الإلكتروني" id="step-email" class="input-field" />
+            <i class="input-icon fa-solid fa-envelope"></i>
+          </div>
+          <button class="send-btn next-btn">التالي</button>
+        </div>
+
+        <!-- Step 2: OTP -->
+        <div class="step-content" data-step="2">
+          <h3 class="otp-title">التحقق من عنوان البريد الإلكتروني</h3>
+          <p class="small-text">
+            تم إرسال رمز التحقق (OTP) إلى عنوان البريد الإلكتروني الذي أدخلته.<br>
+            يرجى إدخال الرمز في الخانة أدناه.
+          </p>
+          <div class="input-wrapper">
+            <input type="text" id="step-otp" placeholder="أدخل الرمز" class="input-field" />
+          </div>
+          <button class="send-btn next-btn">متابعة</button>
+        </div>
+        
+        <!-- Step 3: Password -->
+        <div class="step-content" data-step="3">
+          <h3 class="pass-title">كلمة المرور</h3>
+
+          <div class="input-wrapper password-wrapper">
+            <input type="password" placeholder="كلمة المرور" id="step-pass" class="input-field" />
+            <i class="input-icon fa-solid fa-eye toggle-pass"></i>
+          </div>
+          <ul class="pass-bullets" id="pass-rules">
+            <li>يجب أن تكون 8 أحرف على الأقل</li>
+            <li>يجب أن تحتوي على حرف كبير واحد على الأقل</li>
+          </ul>
+
+          <div class="input-wrapper password-wrapper">
+            <input type="password" placeholder="تأكيد كلمة المرور" id="step-pass-confirm" class="input-field" />
+            <i class="input-icon fa-solid fa-eye toggle-pass"></i>
+          </div>
+          <ul class="pass-bullets" id="pass-match-error">
+            <li>كلمتا المرور غير متطابقتين</li>
+          </ul>
+
+          <button class="send-btn next-btn">متابعة</button>
+        </div>
+
+        <!-- Step 4: Final Form -->
+        <div class="step-content" data-step="4">
+          <h3 class="final-title">معلومات العميل</h3>
+
+          <form class="create-account-form"  id="finalForm">
+            <div class="input-group two-cols">
+              <div>
+                <label for="firstName">الاسم الأول</label>
+                <input type="text" name="firstName" id="firstName" placeholder="الاسم الأول" required />
+              </div>
+              <div>
+                <label for="lastName">الاسم الأخير</label>
+                <input type="text" name="lastName" id="lastName" placeholder="الاسم الأخير" required />
+              </div>
+            </div>
+
+            <div class="input-group icon-input">
+              <label for="email">البريد الإلكتروني</label>
+              <input type="email" name="email" id="email" placeholder="example@email.com" required />
+            </div>
+
+            <div class="input-group icon-input">
+              <label for="phone">الهاتف</label>
+            <input type="tel"  name="phone"  id="phone" placeholder="05XXXXXXXX" required class="input-field" />
+            </div>
+          <input type="hidden" id="step-pass-final" />
+
+          <div class="input-group icon-input">
+              <label for="address">العنوان</label>
+              <input type="text" name="address" id="address" placeholder="أدخل عنوانك" required class="input-field" />
+            </div>
+             <!-- Seller-only fields -->
+            <div id="seller-fields" style="display:none;">
+              <div class="input-group">
+                <label for="companyName">اسم الشركة</label>
+                <input type="text"  name="companyName" id="companyName" placeholder="اسم الشركة" />
+              </div>
+              <div class="input-group">
+                <label for="commercialRecord">رفع السجل التجاري</label>
+                <input type="file" id="commercialRecord" />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="country">الدولة</label>
+              <select id="country" name="country" required>
+                <option value="">اختر الدولة</option>
+                <option value="sa">السعودية</option>
+                <option value="ae">الإمارات</option>
+                <option value="kw">الكويت</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="city" >المدينة</label>
+              <select id="city" name="city" required disabled>
+                <option value="">اختر المدينة</option>
+                <option value="riyadh">الرياض</option>
+                <option value="jeddah">جدة</option>
+                <option value="dammam">الدمام</option>
+              </select>
+            </div>
+
+            <div class="terms">
+              <input type="checkbox" id="agree" required />
+              <label for="agree">
+                بالنقر على متابعة فإنك توافق على
+                <a href="#">الشروط والأحكام</a> و
+                <a href="#">سياسة الخصوصية</a>
+              </label>
+            </div>
+
+            <button type="submit" class="send-btn ">إنشاء</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="module" src="js/api.js"></script>
+<script type="module" src="js/loginscript.js"></script>
+
+</body>
+</html>
