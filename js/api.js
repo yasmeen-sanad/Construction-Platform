@@ -5,20 +5,10 @@ export const api = {
   // ---------------- Register ----------------
   async register(userData) {
     // Use FormData to handle both text fields and files
-    const formData = new FormData();
-    for (const key in userData) {
-      if (userData[key] !== undefined) {
-        if (userData[key] instanceof File) {
-          formData.append(key, userData[key]);
-        } else {
-          formData.append(key, userData[key]);
-        }
-      }
-    }
-
     const response = await fetch(`${BASE_URL}/api/auth/register`, {
       method: 'POST',
-      body: formData, 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
     });
 
     const data = await response.json();
@@ -119,23 +109,25 @@ async getFactories() {
   // ---------------- Add New Product (Admin Only) ----------------
 async addProduct(productData) {
   const token = localStorage.getItem("token");
-  const formData = new FormData();
-
+  const payload = {};
   for (const key in productData) {
     if (productData[key] !== undefined && productData[key] !== null) {
       // Convert price and stock to numbers
       if (key === "price" || key === "stock") {
-        formData.append(key, Number(productData[key]));
+        payload[key] = Number(productData[key]);
       } else {
-        formData.append(key, productData[key]);
+        payload[key] = productData[key];
       }
     }
   }
 
   const response = await fetch(`${BASE_URL}/api/products`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: formData, // multer handles it on backend
+    headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}` 
+    },
+    body: JSON.stringify(payload),
   });
 
   return await response.json();
@@ -158,3 +150,4 @@ async getTopProducts() {
 }
 
 };
+
