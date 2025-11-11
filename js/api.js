@@ -3,23 +3,29 @@ import { BASE_URL } from "./config.js";
 
 export const api = {
   // ---------------- Register ----------------
-  async register(userData) {
-    // Use FormData to handle both text fields and files
-    const response = await fetch(`${BASE_URL}/api/auth/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData),
-    });
+ async register(userData) {
+  console.log('🔍 BASE_URL:', BASE_URL);
+  console.log('🔍 Full URL:', `${BASE_URL}/api/auth/register`);
+  console.log('🔍 User Data:', userData);
+  
+  const response = await fetch(`${BASE_URL}/api/auth/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(userData),
+  });
 
-    const data = await response.json();
+  console.log('🔍 Response Status:', response.status);
+  console.log('🔍 Response URL:', response.url);
 
-    if (data.success && data.token) {
-      localStorage.setItem('token', data.token);
-    }
+  const data = await response.json();
+  console.log('🔍 Response Data:', data);
 
-    return data;
-  },
+  if (data.success && data.token) {
+    localStorage.setItem('token', data.token);
+  }
 
+  return data;
+},
   // ---------------- Login ----------------
   async login(credentials) {
     const response = await fetch(`${BASE_URL}/api/auth/login`, {
