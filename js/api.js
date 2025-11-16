@@ -1,40 +1,24 @@
 
-import { BASE_URL } from "./config.js";
+  import { BASE_URL } from "./config.js";
 
-export const api = {
-  // ---------------- Register ----------------
- async register(userData) {
-  console.log('🔍 BASE_URL:', BASE_URL);
-  console.log('🔍 Full URL:', `${BASE_URL}/api/auth/register`);
-  console.log('🔍 User Data:', userData);
-  
-  const response = await fetch(`${BASE_URL}/api/auth/register`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(userData),
-  });
-
-  console.log('🔍 Response Status:', response.status);
-  console.log('🔍 Response URL:', response.url);
-
-  const data = await response.json();
-  console.log('🔍 Response Data:', data);
-
-  if (data.success && data.token) {
-    localStorage.setItem('token', data.token);
-  }
-
-  return data;
-},
-  // ---------------- Login ----------------
-  async login(credentials) {
-    const response = await fetch(`${BASE_URL}/api/auth/login`, {
+  export const api = {
+    // ---------------- Register ----------------
+  async register(userData) {
+    console.log('🔍 BASE_URL:', BASE_URL);
+    console.log('🔍 Full URL:', `${BASE_URL}/api/auth/register`);
+    console.log('🔍 User Data:', userData);
+    
+    const response = await fetch(`${BASE_URL}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(userData),
     });
 
+    console.log('🔍 Response Status:', response.status);
+    console.log('🔍 Response URL:', response.url);
+
     const data = await response.json();
+    console.log('🔍 Response Data:', data);
 
     if (data.success && data.token) {
       localStorage.setItem('token', data.token);
@@ -42,118 +26,134 @@ export const api = {
 
     return data;
   },
+    // ---------------- Login ----------------
+    async login(credentials) {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials),
+      });
 
-  // ---------------- Products ----------------
-  async getProducts() {
-    const response = await fetch(`${BASE_URL}/api/products`);
+      const data = await response.json();
+
+      if (data.success && data.token) {
+        localStorage.setItem('token', data.token);
+      }
+
+      return data;
+    },
+
+    // ---------------- Products ----------------
+    async getProducts() {
+      const response = await fetch(`${BASE_URL}/api/products`);
+      return await response.json();
+    },
+
+    // ---------------- Create Order ----------------
+    async createOrder(orderData) {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${BASE_URL}/api/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(orderData),
+      });
+      return await response.json();
+    },
+    // ---------------- Get User Info ----------------
+    async getUser() {
+      const token = localStorage.getItem('token');
+      if (!token) return null;
+
+      const response = await fetch(`${BASE_URL}/api/auth/me`, {
+        headers: { 'Authorization': `Bearer ${token}` },
+      });
+      return await response.json();
+    },
+      // ---------------- Admin Statistics ----------------
+    async getAdminStats() {
+      const token = localStorage.getItem("token");
+      if (!token) return null;
+
+      const response = await fetch(`${BASE_URL}/api/admin/stats`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return await response.json();
+    },
+      // ---------------- Get My Orders ----------------
+    async getMyOrders() {
+      const token = localStorage.getItem("token");
+      if (!token) return { success: false, orders: [] };
+
+      const response = await fetch(`${BASE_URL}/api/orders/my-orders`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return await response.json();
+    },
+      // ---------------- Get All Orders (Admin Only) ----------------
+    async getAllOrders() {
+      const token = localStorage.getItem("token");
+      if (!token) return { success: false, orders: [] };
+
+      const response = await fetch(`${BASE_URL}/api/admin/orders`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return await response.json();
+    },
+        // ---------------- Get All factories (Admin Only) ----------------
+
+  async getFactories() {
+    const response = await fetch(`${BASE_URL}/api/factories`);
     return await response.json();
   },
 
-  // ---------------- Create Order ----------------
-  async createOrder(orderData) {
-    const token = localStorage.getItem('token');
-    const response = await fetch(`${BASE_URL}/api/orders`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify(orderData),
-    });
-    return await response.json();
-  },
-  // ---------------- Get User Info ----------------
-  async getUser() {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
-
-    const response = await fetch(`${BASE_URL}/api/auth/me`, {
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
-    return await response.json();
-  },
-    // ---------------- Admin Statistics ----------------
-  async getAdminStats() {
+    // ---------------- Add New Product (Admin Only) ----------------
+  async addProduct(productData) {
     const token = localStorage.getItem("token");
-    if (!token) return null;
-
-    const response = await fetch(`${BASE_URL}/api/admin/stats`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    return await response.json();
-  },
-    // ---------------- Get My Orders ----------------
-  async getMyOrders() {
-    const token = localStorage.getItem("token");
-    if (!token) return { success: false, orders: [] };
-
-    const response = await fetch(`${BASE_URL}/api/orders/my-orders`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    return await response.json();
-  },
-    // ---------------- Get All Orders (Admin Only) ----------------
-  async getAllOrders() {
-    const token = localStorage.getItem("token");
-    if (!token) return { success: false, orders: [] };
-
-    const response = await fetch(`${BASE_URL}/api/admin/orders`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    return await response.json();
-  },
-      // ---------------- Get All factories (Admin Only) ----------------
-
-async getFactories() {
-  const response = await fetch(`${BASE_URL}/api/factories`);
-  return await response.json();
-},
-
-  // ---------------- Add New Product (Admin Only) ----------------
-async addProduct(productData) {
-  const token = localStorage.getItem("token");
-  const payload = {};
-  for (const key in productData) {
-    if (productData[key] !== undefined && productData[key] !== null) {
-      // Convert price and stock to numbers
-      if (key === "price" || key === "stock") {
-        payload[key] = Number(productData[key]);
-      } else {
-        payload[key] = productData[key];
+    const payload = {};
+    for (const key in productData) {
+      if (productData[key] !== undefined && productData[key] !== null) {
+        // Convert price and stock to numbers
+        if (key === "price" || key === "stock") {
+          payload[key] = Number(productData[key]);
+        } else {
+          payload[key] = productData[key];
+        }
       }
     }
+
+    const response = await fetch(`${BASE_URL}/api/products`, {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}` 
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return await response.json();
+  },
+
+  // ---------------- Delete Product (Admin Only) ----------------
+  async deleteProduct(productId) {
+    const token = localStorage.getItem("token");
+    const response = await fetch(`${BASE_URL}/api/products/${productId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return await response.json();
+  },
+
+  // ---------------- Get Top 5 Best-Selling Products ----------------
+  async getTopProducts() {
+    const response = await fetch(`${BASE_URL}/api/products/top`);
+    return await response.json();
   }
 
-  const response = await fetch(`${BASE_URL}/api/products`, {
-    method: "POST",
-    headers: { 
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}` 
-    },
-    body: JSON.stringify(payload),
-  });
-
-  return await response.json();
-},
-
-// ---------------- Delete Product (Admin Only) ----------------
-async deleteProduct(productId) {
-  const token = localStorage.getItem("token");
-  const response = await fetch(`${BASE_URL}/api/products/${productId}`, {
-    method: "DELETE",
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return await response.json();
-},
-
-// ---------------- Get Top 5 Best-Selling Products ----------------
-async getTopProducts() {
-  const response = await fetch(`${BASE_URL}/api/products/top`);
-  return await response.json();
-}
-
-};
+  };
 

@@ -1,7 +1,6 @@
 import { api } from './api.js';
 import { BASE_URL } from "./config.js";
 
-
 function getImagePath(imagePath) {
   if (!imagePath) return "images/placeholder.png"; 
   if (imagePath.startsWith("http")) return imagePath;
@@ -492,5 +491,67 @@ res.factories.forEach(factory => {
 
   } catch {
     container.innerHTML = "<p style='text-align:center;color:red;'>تعذر تحميل المصانع</p>";
+  }
+});
+
+// ======================= Shipping Page – Search & Filter =======================
+document.addEventListener("DOMContentLoaded", () => {
+  if (!document.body.classList.contains("shipping-bg")) return;
+
+  const cardSearchInput = document.querySelector(".shipping-search input");
+  const locationSearchInput = document.querySelector(".filter-search input");
+  const filterCheckboxes = document.querySelectorAll(".filter-list input[type='checkbox']");
+  const cards = document.querySelectorAll(".shipping-card");
+  const cardsContainer = document.querySelector(".shipping-cards");
+
+  function filterCards() {
+    const searchText = cardSearchInput.value.trim().toLowerCase();
+    const selectedLocations = Array.from(filterCheckboxes)
+      .filter(ch => ch.checked)
+      .map(ch => ch.parentElement.textContent.trim().toLowerCase());
+
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.querySelector("h4").textContent.toLowerCase();
+      const city = card.querySelector("p").textContent.toLowerCase();
+      const matchesSearch = name.includes(searchText) || city.includes(searchText);
+      const matchesLocation =
+        selectedLocations.length === 0 ||
+        selectedLocations.some(loc => city.includes(loc));
+
+      const isVisible = matchesSearch && matchesLocation;
+      card.style.display = isVisible ? "block" : "none";
+      if (isVisible) visibleCount++;
+    });
+
+    let msg = document.querySelector(".no-results");
+    if (!msg) {
+      msg = document.createElement("p");
+      msg.className = "no-results";
+      msg.textContent = "لا توجد نتائج مطابقة.";
+      msg.style.textAlign = "center";
+      msg.style.color = "#888";
+      msg.style.fontSize = "16px";
+      msg.style.marginTop = "40px";
+      cardsContainer.appendChild(msg);
+    }
+    msg.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  if (cardSearchInput) {
+    cardSearchInput.addEventListener("input", filterCards);
+  }
+
+  filterCheckboxes.forEach(ch => ch.addEventListener("change", filterCards));
+
+  if (locationSearchInput) {
+    locationSearchInput.addEventListener("input", () => {
+      const text = locationSearchInput.value.trim().toLowerCase();
+      document.querySelectorAll(".filter-list li").forEach(li => {
+        const label = li.textContent.toLowerCase();
+        li.style.display = label.includes(text) ? "block" : "none";
+      });
+    });
   }
 });

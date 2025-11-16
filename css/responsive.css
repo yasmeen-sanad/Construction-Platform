@@ -37,7 +37,7 @@
     padding: 12px 0;
     font-size: 12px;
   }
-  .factories-container {
+  .factories-container,  .Brands-container {
     justify-content: center;
     gap: 15px;
   } 
@@ -126,6 +126,20 @@
     font-size: 11px;
   }
 
+  /* === brands === */
+    .brands-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+    /* === shipping === */
+    .products-section {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   /* === Product Filters === */
   .filter-toggle-btn {
     display: block;
@@ -140,7 +154,7 @@
     text-align: right;
     float: right;
   }
-  .products-filter-panel {
+  .products-filter-panel{
     width: 100%;
     flex: none;
     order: -1;
@@ -242,7 +256,9 @@
 
   .seller-homepage,
   .product-homepage,
-  .factories-homepage {
+  .factories-homepage,
+  .Brands-homepage ,
+  .Shipping-homepage{
     padding: 10px 20px;
   }
 
@@ -533,6 +549,11 @@
   .product-info .price {
     font-size: 20px;
   }
+
+  /* === brands === */
+    .brands-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
     @media (max-width: 600px) {
       .profile-container {
@@ -579,6 +600,14 @@
   input:checked + .slider:before {
     transform: translateX(20px);
   }
+    .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

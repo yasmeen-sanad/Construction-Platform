@@ -421,7 +421,7 @@ h2 {
 
 /* Homepage  */
 
- .product-homepage, .factories-homepage, .seller-homepage {
+ .product-homepage, .factories-homepage, .seller-homepage, .Brands-homepage, .Shipping-homepage {
 padding: 15px 0px;
 max-width: 1200px; 
 margin: 50px auto 0 auto;
@@ -1672,7 +1672,7 @@ transition: transform 0.3s ease;
 
 /* factories */
 
-  .factories-container {
+  .factories-container, .Brands-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1726,7 +1726,7 @@ transition: transform 0.3s ease;
   transform: translateY(-5px);
 }
 /* Factories Detail Section */
-.Factories-detail {
+.Factories-detail, .Brands-detail , .Shipping-detail{
   max-width: 1200px;
   margin: 20px auto;
   display: flex;
@@ -1961,7 +1961,7 @@ transition: transform 0.3s ease;
   font-weight: 600;
   color: #484746; 
 }
-.products-filter-panel {
+.products-filter-panel{
   flex: 0 0 250px;  
   background-color: #fff;
   padding: 20px;
@@ -2940,4 +2940,216 @@ input:checked + .slider:before {
 
 body.modal-open {
   overflow: hidden;
+}
+
+/* Brands */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 15px;
+  justify-items: center;
+  align-items: center;
+  margin: 10px auto;
+  width: 90%;              
+  max-width: 1200px;     
+  direction: rtl;          
+}
+
+.brand-box {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  width: 180px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-box img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* ✅ Page Layout */
+.shipping-layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 25px;
+  width: 90%;
+  max-width: 1300px;
+  margin: 40px auto;
+  direction: rtl;
+}
+
+/* ✅ Right Filter Panel */
+.filter-panel {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  height: fit-content;
+}
+
+.filter-panel h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 18px;
+}
+
+.filter-search {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.filter-search input {
+  width: 100%;
+  padding: 10px 35px 10px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.filter-search i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: #777;
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+}
+
+.filter-list li {
+  margin: 8px 0;
+}
+
+.filter-list label {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/*  Cards Grid Section */
+.shipping-cards {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 25px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.shipping-search {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.shipping-search input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.shipping-search i {
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  color: #777;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  direction: rtl;
+}
+
+.shipping-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.shipping-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.shipping-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.shipping-card h4 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.shipping-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.no-results {
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.details-btn {
+  display: inline-block;
+  background: #01a48f;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.details-btn:hover {
+  background: #028876;
+}
+.shipping-title{
+  margin-bottom: 5px;
+  font-weight: 200px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #28a395;
+  color: #fff;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #0d6e63;
+  transform: scale(1.1);
+  text-decoration: none;
 }

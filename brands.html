@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="icon" href="images/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تفاصيل المنتج</title>
+  <title> العلامات التجارية </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -67,89 +67,44 @@
     </div>
   </div>
 </header>
+<body class="Brands-bg">
 
-
-<body class="product-bg">
-<section class="product-homepage">
-
-<section class="product-detail">
-  <h1 class="section-title product"></h1>
-
-  <div class="product-images">
-    <div class="main-image-wrapper">
-      <img src="" alt="Main Image" class="main-image" id="mainImage"class="lazyload">
-
-      <button class="wishlist-btn">
-        <i class="fa-regular fa-heart"></i>
-        <span class="tooltip-text">أضف إلى قائمة المفضلة</span>
-      </button>
-
-      <div class="image-dots" id="imageDots">
-        <span class="dot active" onclick="changeImage(0)"></span>
-        <span class="dot" onclick="changeImage(1)"></span>
-        <span class="dot" onclick="changeImage(2)"></span>
-        <span class="dot" onclick="changeImage(3)"></span>
-        <span class="dot" onclick="changeImage(4)"></span>
-      </div>
-    </div>
-
-    <!-- Thumbnails -->
-    <div class="thumbnail-images">
-      <img src="images/level.png" alt="Thumbnail 1" onclick="changeImage(0)"class="lazyload">
-      <img src="images/wood2.png" alt="Thumbnail 2" onclick="changeImage(1)"class="lazyload">
-      <img src="images/wood2.png" alt="Thumbnail 3" onclick="changeImage(2)"class="lazyload">
-      <img src="images/level.png" alt="Thumbnail 4" onclick="changeImage(3)"class="lazyload">
-      <img src="images/iron.png" alt="Thumbnail 5" onclick="changeImage(4)"class="lazyload">
-    </div>
+<section class="Brands-homepage">
+<!-- Mobile Search Bar -->
+<div class="mobile-search-box">
+  <div class="mobile-search-wrapper">
+    <input type="text" placeholder="اكتب اسم المنتج أو الشركة" />
+    <i class="fa fa-search search-icon"></i>
   </div>
-
-  <!-- Product Info -->
-  <div class="product-info">
-    <p class="brand"></p>
-   <p class="small-description"> </p>
-    <!-- Color Selection -->
-    <div class="color-selection">
-      <span>اختر اللون:</span>
-      <div class="color-circles">
-        <span class="color-circle" style="background-color: #5C4033;"></span> <!-- Brown -->
-        <span class="color-circle" style="background-color: #808080;"></span> <!-- Grey -->
-        <span class="color-circle" style="background-color: #000000;"></span> <!-- Black -->
-        <span class="color-circle" style="background-color: #000080;"></span> <!-- Navy -->
-        <span class="color-circle" style="background-color: #F5F5DC;"></span> <!-- Beige -->
-      </div>
-    </div>
-
-    <!-- Price -->
-    <p class="price"></p>
-
-    <div class="product-actions">
-      <button>أضف إلى السلة</button>
-      <input type="number" min="1" value="1">
-    </div>
+</div>
+  <!-- Brands Details -->
+  <section class="Brands-detail">
+    <h1 class="section-title"> العلامات التجارية</h1>
+  <div class="Brands-container">
+<div class="brands-grid">
+  <div class="brand-box">
+    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHSM2aS9KomXQ/company-logo_200_200/company-logo_200_200/0/1736451172489/bazsteelksa_logo?e=2147483647&v=beta&t=-zzuVIG6B7sFVxO2k27AoIRu0ao4dkqWb0w-IQWSw1I" alt="baz" />
   </div>
-</section>
-
-<!-- Success Overlay -->
-<div id="successOverlay" class="overlay">
-  <div class="overlay-box success">
-    <i class="fa-solid fa-circle-check"></i>
-    <p>تمت الإضافة بنجاح</p>
+  <div class="brand-box">
+    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQE61UbpRRg2Vw/company-logo_200_200/company-logo_200_200/0/1630554726463?e=2147483647&v=beta&t=UIv_I9f6lyc86uvXKDOWfXrCL9g_oGAnHpmkqJpdMPA" alt="Tauseer" />
+  </div>
+  <div class="brand-box">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCt1XkqvLG6mZtJoWEfZJ2xNals_IojnGww&s" alt="Oscar" />
+  </div>
+  <div class="brand-box">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAh_aSxZmMnVDUhIRM9m5jX3vcQ0vFuLH5g&s" alt="SAB" />
+  </div>
+  <div class="brand-box">
+    <img src="https://back.industry.com.sa/storage/10596/conversions/af100465-d081-4f40-a9d3-7811cd90f9fa-optimize.webp" alt="عالم التصدير العالميه" />
+  </div>
+  <div class="brand-box">
+    <img src="https://gento.com.sa/wp-content/uploads/2017/02/gento.png" alt="Gento" />
   </div>
 </div>
 
-<!-- Login Overlay -->
-<div id="loginOverlay" class="overlay">
-  <div class="overlay-box">
-    <p>يجب تسجيل الدخول أولاً</p>
-    <div class="overlay-buttons">
-      <button id="loginOverlayBtn" onclick="window.location.href='login.html'">تسجيل الدخول</button>
-      <button id="cancelLogin" onclick="document.getElementById('loginOverlay').style.display='none'">إلغاء</button>
-    </div>
-  </div>
 </div>
-
+  </section>
 </section>
-
 
 <!-- Footer -->
 <footer class="footer">
@@ -192,10 +147,10 @@
       <div class="footer-column">
         <h4>أنواع الدفع</h4>
         <ul class="payment-list">
-          <li><img src="images/visa.png" alt="فيزا" class="payment-icon"class="lazyload"> فيزا كارد</li>
-          <li><img src="images/Mastercard.png" alt="ماستر كارد" class="payment-icon"class="lazyload"> ماستر كارد</li>
-          <li><img src="images/applepay.png" alt="ابل باي" class="payment-icon"class="lazyload"> أبل باي</li>
-          <li><img src="images/mada.png" alt="مدى" class="payment-icon"class="lazyload"> مدى</li>
+          <li><img src="images/visa.png" alt="فيزا" class="payment-icon" class="lazyload"> فيزا كارد</li>
+          <li><img src="images/Mastercard.png" alt="ماستر كارد" class="payment-icon" class="lazyload"> ماستر كارد</li>
+          <li><img src="images/applepay.png" alt="ابل باي" class="payment-icon" class="lazyload"> أبل باي</li>
+          <li><img src="images/mada.png" alt="مدى" class="payment-icon" class="lazyload"> مدى</li>
           <li><i class="fa fa-money-bill-wave payment-icon"></i> التحويل البنكي </li>
         </ul>
       </div>
@@ -222,7 +177,7 @@
 </footer>
 <script type="module" src="js/api.js"></script>
 <script type="module" src="js/userScript.js"></script>
-<script type="module" src="js/productPage.js"></script>
+
 
 </body>
 </html>

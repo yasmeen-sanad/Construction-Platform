@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="icon" href="images/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تفاصيل المنتج</title>
+  <title> شركات الشحن</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -42,6 +42,7 @@
               <i class="fas fa-building"></i>
               <span class="sidebar-text">المنشآت المساندة</span>
             </a>
+
           </div>
       </div>
       <a href="#">
@@ -67,89 +68,65 @@
     </div>
   </div>
 </header>
+<body class="shipping-bg">
+
+<section class="shpping-homepage">
 
 
-<body class="product-bg">
-<section class="product-homepage">
+<div class="products-section">
 
-<section class="product-detail">
-  <h1 class="section-title product"></h1>
+  <aside class="products-filter-panel">
+    <div class="filter-search">
+      <input type="text" placeholder="ابحث عن الموقع...">
+      <i class="fa fa-search"></i>
+    </div>
+    <ul class="filter-list">
+      <li><label><input type="checkbox"> المنطقة الشرقية</label></li>
+      <li><label><input type="checkbox"> منطقة الرياض</label></li>
+      <li><label><input type="checkbox"> منطقة القصيم</label></li>
+      <li><label><input type="checkbox"> منطقة تبوك</label></li>
+      <li><label><input type="checkbox"> مدينة الدمام</label></li>
+      <li><label><input type="checkbox"> جدة</label></li>
+      <li><label><input type="checkbox"> الرياض</label></li>
+      <li><label><input type="checkbox"> الخبر</label></li>
+    </ul>
+  </aside>
 
-  <div class="product-images">
-    <div class="main-image-wrapper">
-      <img src="" alt="Main Image" class="main-image" id="mainImage"class="lazyload">
-
-      <button class="wishlist-btn">
-        <i class="fa-regular fa-heart"></i>
-        <span class="tooltip-text">أضف إلى قائمة المفضلة</span>
-      </button>
-
-      <div class="image-dots" id="imageDots">
-        <span class="dot active" onclick="changeImage(0)"></span>
-        <span class="dot" onclick="changeImage(1)"></span>
-        <span class="dot" onclick="changeImage(2)"></span>
-        <span class="dot" onclick="changeImage(3)"></span>
-        <span class="dot" onclick="changeImage(4)"></span>
+  <div class="shipping-cards">
+    <div class="shipping-search">
+      <input type="text" placeholder="ابحث ...">
+      <i class="fa fa-search"></i>
+    </div>
+<h3 class="shipping-title">شركات الشحن (4) </h3>
+    <div class="cards-grid">
+      <div class="shipping-card">
+        <h4>شركه الطاقه البحريه للخدمات البحريه المحدوده</h4>
+        <p><i class="fa fa-map-marker-alt"></i> جدة</p>
+        <a href="#" class="details-btn">المزيد من التفاصيل</a>
       </div>
-    </div>
 
-    <!-- Thumbnails -->
-    <div class="thumbnail-images">
-      <img src="images/level.png" alt="Thumbnail 1" onclick="changeImage(0)"class="lazyload">
-      <img src="images/wood2.png" alt="Thumbnail 2" onclick="changeImage(1)"class="lazyload">
-      <img src="images/wood2.png" alt="Thumbnail 3" onclick="changeImage(2)"class="lazyload">
-      <img src="images/level.png" alt="Thumbnail 4" onclick="changeImage(3)"class="lazyload">
-      <img src="images/iron.png" alt="Thumbnail 5" onclick="changeImage(4)"class="lazyload">
-    </div>
-  </div>
-
-  <!-- Product Info -->
-  <div class="product-info">
-    <p class="brand"></p>
-   <p class="small-description"> </p>
-    <!-- Color Selection -->
-    <div class="color-selection">
-      <span>اختر اللون:</span>
-      <div class="color-circles">
-        <span class="color-circle" style="background-color: #5C4033;"></span> <!-- Brown -->
-        <span class="color-circle" style="background-color: #808080;"></span> <!-- Grey -->
-        <span class="color-circle" style="background-color: #000000;"></span> <!-- Black -->
-        <span class="color-circle" style="background-color: #000080;"></span> <!-- Navy -->
-        <span class="color-circle" style="background-color: #F5F5DC;"></span> <!-- Beige -->
+      <div class="shipping-card">
+        <h4>مؤسسة منارة الغربية الدولية للنقل البحري</h4>
+        <p><i class="fa fa-map-marker-alt"></i> الرياض</p>
+        <a href="#" class="details-btn">المزيد من التفاصيل</a>
       </div>
-    </div>
 
-    <!-- Price -->
-    <p class="price"></p>
+      <div class="shipping-card">
+        <h4>مجموعة بحر الاطلسي</h4>
+        <p><i class="fa fa-map-marker-alt"></i> جدة</p>
+        <a href="#" class="details-btn">المزيد من التفاصيل</a>
+      </div>
 
-    <div class="product-actions">
-      <button>أضف إلى السلة</button>
-      <input type="number" min="1" value="1">
-    </div>
+
+    <div class="shipping-card">
+        <h4>مؤسسة الغامدي</h4>
+        <p><i class="fa fa-map-marker-alt"></i> الرياض</p>
+        <a href="#" class="details-btn">المزيد من التفاصيل</a>
+      </div>    </div>
   </div>
-</section>
 
-<!-- Success Overlay -->
-<div id="successOverlay" class="overlay">
-  <div class="overlay-box success">
-    <i class="fa-solid fa-circle-check"></i>
-    <p>تمت الإضافة بنجاح</p>
-  </div>
 </div>
-
-<!-- Login Overlay -->
-<div id="loginOverlay" class="overlay">
-  <div class="overlay-box">
-    <p>يجب تسجيل الدخول أولاً</p>
-    <div class="overlay-buttons">
-      <button id="loginOverlayBtn" onclick="window.location.href='login.html'">تسجيل الدخول</button>
-      <button id="cancelLogin" onclick="document.getElementById('loginOverlay').style.display='none'">إلغاء</button>
-    </div>
-  </div>
-</div>
-
 </section>
-
 
 <!-- Footer -->
 <footer class="footer">
@@ -193,9 +170,9 @@
         <h4>أنواع الدفع</h4>
         <ul class="payment-list">
           <li><img src="images/visa.png" alt="فيزا" class="payment-icon"class="lazyload"> فيزا كارد</li>
-          <li><img src="images/Mastercard.png" alt="ماستر كارد" class="payment-icon"class="lazyload"> ماستر كارد</li>
-          <li><img src="images/applepay.png" alt="ابل باي" class="payment-icon"class="lazyload"> أبل باي</li>
-          <li><img src="images/mada.png" alt="مدى" class="payment-icon"class="lazyload"> مدى</li>
+          <li><img src="images/Mastercard.png" alt="ماستر كارد" class="payment-icon" class="lazyload"> ماستر كارد</li>
+          <li><img src="images/applepay.png" alt="ابل باي" class="payment-icon" class="lazyload"> أبل باي</li>
+          <li><img src="images/mada.png" alt="مدى" class="payment-icon" class="lazyload"> مدى</li>
           <li><i class="fa fa-money-bill-wave payment-icon"></i> التحويل البنكي </li>
         </ul>
       </div>
@@ -222,7 +199,5 @@
 </footer>
 <script type="module" src="js/api.js"></script>
 <script type="module" src="js/userScript.js"></script>
-<script type="module" src="js/productPage.js"></script>
-
 </body>
 </html>
