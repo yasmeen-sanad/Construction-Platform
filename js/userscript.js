@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.classList.add("product-card");
       card.innerHTML = `
         <div class="product-image-wrapper">
-          <a href="product.html?name=${encodeURIComponent(product.name)}&brand=${encodeURIComponent(product.supplier)}&price=${product.price}&img=${encodeURIComponent(product.image)}">
+          <a href="product.html?id=${product._id}&name=${encodeURIComponent(product.name)}&brand=${encodeURIComponent(product.supplier)}&price=${product.price}&img=${encodeURIComponent(product.image)}">
           <img src="${getImagePath(product.image)}" alt="${product.name}">
           </a>
           <button class="card-wishlist-btn"><i class="fa-regular fa-heart"></i></button>
