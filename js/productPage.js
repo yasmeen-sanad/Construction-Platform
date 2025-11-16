@@ -1,45 +1,49 @@
 // --------------------- Product Page Script ---------------------
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
-  const name = params.get("name");
-  const brand = params.get("brand");
-  const price = params.get("price");
-  const img = decodeURIComponent(params.get("img") || "");
+  const productId = params.get("id"); // 👈 استخدم ID
 
-  if (!name) {
-    console.error("❌ اسم المنتج غير متوفر في الرابط");
+  if (!productId) {
+    console.error("❌ معرف المنتج غير متوفر في الرابط");
     return;
   }
 
-  // Update main info from URL
-  const title = document.querySelector(".product-detail h1");
-  if (title) title.textContent = name;
-
-  const mainImage = document.getElementById("mainImage");
-  if (mainImage && img) {
-mainImage.src = img.startsWith("http") ? img : `${BASE_URL}${img}`;
-    mainImage.alt = name;
-  }
-
-  const brandEl = document.querySelector(".product-info .brand");
-  if (brandEl) brandEl.textContent = brand || "غير محدد";
-
-  const priceEl = document.querySelector(".product-info .price");
-  if (priceEl && price) priceEl.textContent = `${price} ريال`;
-
-  // Fetch description from backend
   try {
-const res = await fetch(`${BASE_URL}/api/products/${encodeURIComponent(name)}`);
+    // 👇 جلب المنتج باستخدام ID
+    const res = await fetch(`${BASE_URL}/api/products/${productId}`);
     const data = await res.json();
 
-    if (data.success && data.product) {
-      const descEl = document.querySelector(".small-description");
-      if (descEl) descEl.textContent = data.product.description || "لا يوجد وصف متاح.";
-    } else {
-      console.warn("⚠️ لم يتم العثور على المنتج في قاعدة البيانات:", data.message);
+    if (!data.success || !data.product) {
+      console.error("❌ المنتج غير موجود:", data.message);
+      return;
     }
+
+    const product = data.product;
+
+    // تحديث البيانات من قاعدة البيانات
+    const title = document.querySelector(".product-detail h1");
+    if (title) title.textContent = product.name;
+
+    const brandEl = document.querySelector(".product-info .brand");
+    if (brandEl) brandEl.textContent = product.supplier || "غير محدد";
+
+    const priceEl = document.querySelector(".product-info .price");
+    if (priceEl) priceEl.textContent = `${product.price} ريال`;
+
+    const descEl = document.querySelector(".small-description");
+    if (descEl) descEl.textContent = product.description || "لا يوجد وصف متاح.";
+
+    // تحديث الصورة من قاعدة البيانات
+    const mainImage = document.getElementById("mainImage");
+    if (mainImage) {
+      mainImage.src = product.image.startsWith("http")
+        ? product.image
+        : `${BASE_URL}${product.image}`;
+      mainImage.alt = product.name;
+    }
+
   } catch (error) {
-    console.error("⚠️ خطأ أثناء جلب وصف المنتج:", error);
+    console.error("❌ خطأ أثناء جلب المنتج:", error);
   }
 });
 window.addEventListener("load", () => {
