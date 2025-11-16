@@ -1,7 +1,9 @@
 // --------------------- Product Page Script ---------------------
+import { BASE_URL } from './config.js'; // 👈 استيراد BASE_URL
+
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
-  const productId = params.get("id"); // 👈 استخدم ID
+  const productId = params.get("id");
 
   if (!productId) {
     console.error("❌ معرف المنتج غير متوفر في الرابط");
@@ -9,8 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    // 👇 جلب المنتج باستخدام ID
-    const res = await fetch(`${BASE_URL}/api/products/${productId}`);
+    const res = await fetch(`${BASE_URL}/api/products/${productId}`); // 👈 استخدام BASE_URL
     const data = await res.json();
 
     if (!data.success || !data.product) {
@@ -20,25 +21,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const product = data.product;
 
-    // تحديث البيانات من قاعدة البيانات
-    const title = document.querySelector(".product-detail h1");
-    if (title) title.textContent = product.name;
+    // تحديث البيانات
+    document.querySelector(".product-detail h1").textContent = product.name;
+    document.querySelector(".product-info .brand").textContent = product.supplier || "غير محدد";
+    document.querySelector(".product-info .price").textContent = `${product.price} ريال`;
+    document.querySelector(".small-description").textContent = product.description || "لا يوجد وصف متاح.";
 
-    const brandEl = document.querySelector(".product-info .brand");
-    if (brandEl) brandEl.textContent = product.supplier || "غير محدد";
-
-    const priceEl = document.querySelector(".product-info .price");
-    if (priceEl) priceEl.textContent = `${product.price} ريال`;
-
-    const descEl = document.querySelector(".small-description");
-    if (descEl) descEl.textContent = product.description || "لا يوجد وصف متاح.";
-
-    // تحديث الصورة من قاعدة البيانات
+    // تحديث الصورة ← هنا التغيير المهم!
     const mainImage = document.getElementById("mainImage");
     if (mainImage) {
+      // 👇 لا تستخدم BASE_URL مع الصورة، لأنها مسار محلي للـ Backend
       mainImage.src = product.image.startsWith("http")
         ? product.image
-        : `${BASE_URL}${product.image}`;
+        : `https://construction-platform-backend.onrender.com${product.image}`;
       mainImage.alt = product.name;
     }
 
